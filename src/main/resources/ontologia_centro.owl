@@ -1,0 +1,603 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="urn:webprotege:ontology:a0633dd4-7392-4333-bddc-11c5aba70ce8#"
+     xml:base="urn:webprotege:ontology:a0633dd4-7392-4333-bddc-11c5aba70ce8"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:parte_1="http://www.web-semantica/ep/parte_1#"
+     xmlns:webprotege="http://webprotege.stanford.edu/">
+    <owl:Ontology rdf:about="http://www.web-semantica/ep/parte_1"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#clienteLogadoCompra -->
+
+    <owl:ObjectProperty rdf:about="http://www.web-semantica/ep/parte_1#clienteLogadoCompra">
+        <rdfs:subPropertyOf rdf:resource="http://www.web-semantica/ep/parte_1#compra"/>
+        <rdfs:domain rdf:resource="http://www.web-semantica/ep/parte_1#ClienteLogado"/>
+        <rdfs:range rdf:resource="http://www.web-semantica/ep/parte_1#Produto"/>
+        <rdfs:label xml:lang="pt-br">cliente logado compra</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#clienteLogadoContrata -->
+
+    <owl:ObjectProperty rdf:about="http://www.web-semantica/ep/parte_1#clienteLogadoContrata">
+        <rdfs:subPropertyOf rdf:resource="http://www.web-semantica/ep/parte_1#contrata"/>
+        <rdfs:domain rdf:resource="http://www.web-semantica/ep/parte_1#ClienteLogado"/>
+        <rdfs:range rdf:resource="http://www.web-semantica/ep/parte_1#Servico"/>
+        <rdfs:label xml:lang="pt-br">cliente logado contrata</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#clienteNaoLogadoCompra -->
+
+    <owl:ObjectProperty rdf:about="http://www.web-semantica/ep/parte_1#clienteNaoLogadoCompra">
+        <rdfs:subPropertyOf rdf:resource="http://www.web-semantica/ep/parte_1#compra"/>
+        <rdfs:domain rdf:resource="http://www.web-semantica/ep/parte_1#ClienteNaoLogado"/>
+        <rdfs:range rdf:resource="http://www.web-semantica/ep/parte_1#Produto"/>
+        <rdfs:label xml:lang="pt-br">cliente não logado compra</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#clienteNaoLogadoContrata -->
+
+    <owl:ObjectProperty rdf:about="http://www.web-semantica/ep/parte_1#clienteNaoLogadoContrata">
+        <rdfs:subPropertyOf rdf:resource="http://www.web-semantica/ep/parte_1#contrata"/>
+        <rdfs:domain rdf:resource="http://www.web-semantica/ep/parte_1#ClienteNaoLogado"/>
+        <rdfs:range rdf:resource="http://www.web-semantica/ep/parte_1#Servico"/>
+        <rdfs:label xml:lang="pt-br">cliente não logado compra</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#compra -->
+
+    <owl:ObjectProperty rdf:about="http://www.web-semantica/ep/parte_1#compra">
+        <owl:inverseOf rdf:resource="http://www.web-semantica/ep/parte_1#compradoPor"/>
+        <rdfs:domain rdf:resource="http://www.web-semantica/ep/parte_1#Cliente"/>
+        <rdfs:range rdf:resource="http://www.web-semantica/ep/parte_1#Produto"/>
+        <rdfs:label xml:lang="pt-br">compra</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#compradoPor -->
+
+    <owl:ObjectProperty rdf:about="http://www.web-semantica/ep/parte_1#compradoPor">
+        <rdfs:domain rdf:resource="http://www.web-semantica/ep/parte_1#Produto"/>
+        <rdfs:range rdf:resource="http://www.web-semantica/ep/parte_1#Cliente"/>
+        <rdfs:label xml:lang="pt-br">é comprado por</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#contrata -->
+
+    <owl:ObjectProperty rdf:about="http://www.web-semantica/ep/parte_1#contrata">
+        <owl:inverseOf rdf:resource="http://www.web-semantica/ep/parte_1#contratadoPor"/>
+        <rdfs:domain rdf:resource="http://www.web-semantica/ep/parte_1#Cliente"/>
+        <rdfs:range rdf:resource="http://www.web-semantica/ep/parte_1#Servico"/>
+        <rdfs:label xml:lang="pt-br">contrata</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#contratadoPor -->
+
+    <owl:ObjectProperty rdf:about="http://www.web-semantica/ep/parte_1#contratadoPor">
+        <rdfs:domain rdf:resource="http://www.web-semantica/ep/parte_1#Servico"/>
+        <rdfs:range rdf:resource="http://www.web-semantica/ep/parte_1#Cliente"/>
+        <rdfs:label xml:lang="pt-br">é contratado por</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#estaEm -->
+
+    <owl:ObjectProperty rdf:about="http://www.web-semantica/ep/parte_1#estaEm">
+        <owl:inverseOf rdf:resource="http://www.web-semantica/ep/parte_1#levaA"/>
+        <rdfs:domain rdf:resource="http://www.web-semantica/ep/parte_1#Loja"/>
+        <rdfs:range rdf:resource="http://www.web-semantica/ep/parte_1#Rota"/>
+        <rdfs:label xml:lang="pt-br">esta em</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#levaA -->
+
+    <owl:ObjectProperty rdf:about="http://www.web-semantica/ep/parte_1#levaA">
+        <rdfs:domain rdf:resource="http://www.web-semantica/ep/parte_1#Rota"/>
+        <rdfs:range rdf:resource="http://www.web-semantica/ep/parte_1#Loja"/>
+        <rdfs:label xml:lang="pt-br">leva á</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#oferece -->
+
+    <owl:ObjectProperty rdf:about="http://www.web-semantica/ep/parte_1#oferece">
+        <owl:inverseOf rdf:resource="http://www.web-semantica/ep/parte_1#oferecidoPor"/>
+        <rdfs:domain rdf:resource="http://www.web-semantica/ep/parte_1#LojaServicos"/>
+        <rdfs:range rdf:resource="http://www.web-semantica/ep/parte_1#Servico"/>
+        <rdfs:label xml:lang="pt-br">oferece</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#oferecidoPor -->
+
+    <owl:ObjectProperty rdf:about="http://www.web-semantica/ep/parte_1#oferecidoPor">
+        <rdfs:domain rdf:resource="http://www.web-semantica/ep/parte_1#Servico"/>
+        <rdfs:range rdf:resource="http://www.web-semantica/ep/parte_1#LojaServicos"/>
+        <rdfs:label xml:lang="pt-br">é oferecido por</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#vende -->
+
+    <owl:ObjectProperty rdf:about="http://www.web-semantica/ep/parte_1#vende">
+        <owl:inverseOf rdf:resource="http://www.web-semantica/ep/parte_1#vendidoPor"/>
+        <rdfs:domain rdf:resource="http://www.web-semantica/ep/parte_1#LojaProdutos"/>
+        <rdfs:range rdf:resource="http://www.web-semantica/ep/parte_1#Produto"/>
+        <rdfs:label xml:lang="pt-br">vende</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#vendidoPor -->
+
+    <owl:ObjectProperty rdf:about="http://www.web-semantica/ep/parte_1#vendidoPor">
+        <rdfs:domain rdf:resource="http://www.web-semantica/ep/parte_1#Produto"/>
+        <rdfs:range rdf:resource="http://www.web-semantica/ep/parte_1#LojaProdutos"/>
+        <rdfs:label xml:lang="pt-br">é vendido por</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Cliente -->
+
+    <owl:Class rdf:about="http://www.web-semantica/ep/parte_1#Cliente">
+        <rdfs:label xml:lang="pt-br">Cliente</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#ClienteLogado -->
+
+    <owl:Class rdf:about="http://www.web-semantica/ep/parte_1#ClienteLogado">
+        <rdfs:subClassOf rdf:resource="http://www.web-semantica/ep/parte_1#Cliente"/>
+        <owl:disjointWith rdf:resource="http://www.web-semantica/ep/parte_1#ClienteNaoLogado"/>
+        <rdfs:label xml:lang="pt-br">ClienteLogado</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#ClienteNaoLogado -->
+
+    <owl:Class rdf:about="http://www.web-semantica/ep/parte_1#ClienteNaoLogado">
+        <rdfs:subClassOf rdf:resource="http://www.web-semantica/ep/parte_1#Cliente"/>
+        <rdfs:label xml:lang="pt-br">ClienteNaoLogado</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Loja -->
+
+    <owl:Class rdf:about="http://www.web-semantica/ep/parte_1#Loja">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.web-semantica/ep/parte_1#estaEm"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.web-semantica/ep/parte_1#Rota"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="pt-br">Loja</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#LojaProdutos -->
+
+    <owl:Class rdf:about="http://www.web-semantica/ep/parte_1#LojaProdutos">
+        <rdfs:subClassOf rdf:resource="http://www.web-semantica/ep/parte_1#Loja"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.web-semantica/ep/parte_1#vende"/>
+                <owl:someValuesFrom rdf:resource="http://www.web-semantica/ep/parte_1#Produto"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="pt-br">LojaProdutos</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#LojaServicos -->
+
+    <owl:Class rdf:about="http://www.web-semantica/ep/parte_1#LojaServicos">
+        <rdfs:subClassOf rdf:resource="http://www.web-semantica/ep/parte_1#Loja"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.web-semantica/ep/parte_1#oferece"/>
+                <owl:someValuesFrom rdf:resource="http://www.web-semantica/ep/parte_1#Servico"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="pt-br">LojaServicos</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Produto -->
+
+    <owl:Class rdf:about="http://www.web-semantica/ep/parte_1#Produto">
+        <rdfs:label xml:lang="pt-br">Produto</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Rota -->
+
+    <owl:Class rdf:about="http://www.web-semantica/ep/parte_1#Rota">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.web-semantica/ep/parte_1#levaA"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.web-semantica/ep/parte_1#Loja"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="pt-br">Rota</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Servico -->
+
+    <owl:Class rdf:about="http://www.web-semantica/ep/parte_1#Servico">
+        <rdfs:label xml:lang="pt-br">Serviço</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Beauty_Turismo -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Beauty_Turismo">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#LojaServicos"/>
+        <parte_1:oferece rdf:resource="http://www.web-semantica/ep/parte_1#Pacote_Viagens"/>
+        <rdfs:label xml:lang="pt-br">beauty turismo</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Calca -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Calca">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#Produto"/>
+        <rdfs:label xml:lang="pt-br">calça</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Camisa -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Camisa">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#Produto"/>
+        <rdfs:label xml:lang="pt-br">camisa</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Chocolate -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Chocolate">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#Produto"/>
+        <rdfs:label xml:lang="pt-br">chocolate</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Cleo_Massagens -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Cleo_Massagens">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#LojaServicos"/>
+        <parte_1:oferece rdf:resource="http://www.web-semantica/ep/parte_1#Massagem"/>
+        <rdfs:label xml:lang="pt-br">cléo massagens</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Hamburguer -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Hamburguer">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#Produto"/>
+        <rdfs:label xml:lang="pt-br">hambúrguer</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Jhonny -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Jhonny">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#ClienteLogado"/>
+        <parte_1:clienteLogadoCompra rdf:resource="http://www.web-semantica/ep/parte_1#Joia"/>
+        <parte_1:clienteLogadoCompra rdf:resource="http://www.web-semantica/ep/parte_1#Oculos"/>
+        <parte_1:clienteLogadoContrata rdf:resource="http://www.web-semantica/ep/parte_1#Pacote_Viagens"/>
+        <rdfs:label xml:lang="pt-br">Jhonny</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Joia -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Joia">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#Produto"/>
+        <rdfs:label xml:lang="pt-br">jóia</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Joias_Boom -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Joias_Boom">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#LojaProdutos"/>
+        <parte_1:vende rdf:resource="http://www.web-semantica/ep/parte_1#Joia"/>
+        <rdfs:label xml:lang="pt-br">jóias boom</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Marie -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Marie">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#ClienteNaoLogado"/>
+        <parte_1:clienteNaoLogadoCompra rdf:resource="http://www.web-semantica/ep/parte_1#Chocolate"/>
+        <parte_1:clienteNaoLogadoCompra rdf:resource="http://www.web-semantica/ep/parte_1#Tenis"/>
+        <parte_1:clienteNaoLogadoContrata rdf:resource="http://www.web-semantica/ep/parte_1#Massagem"/>
+        <parte_1:clienteNaoLogadoContrata rdf:resource="http://www.web-semantica/ep/parte_1#Pacote_Viagens"/>
+        <rdfs:label xml:lang="pt-br">Marie</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Massagem -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Massagem">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#Servico"/>
+        <rdfs:label xml:lang="pt-br">massagem</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Oculos -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Oculos">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#Produto"/>
+        <rdfs:label xml:lang="pt-br">óculos</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Pacote_Viagens -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Pacote_Viagens">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#Servico"/>
+        <rdfs:label xml:lang="pt-br">pacote de viagens</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Prato_Feito -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Prato_Feito">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#LojaProdutos"/>
+        <parte_1:vende rdf:resource="http://www.web-semantica/ep/parte_1#Chocolate"/>
+        <parte_1:vende rdf:resource="http://www.web-semantica/ep/parte_1#Hamburguer"/>
+        <rdfs:label xml:lang="pt-br">prato feito</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Rua_1_20 -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Rua_1_20">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#Rota"/>
+        <parte_1:levaA rdf:resource="http://www.web-semantica/ep/parte_1#Beauty_Turismo"/>
+        <rdfs:comment xml:lang="pt-br">A Rua 1 é o corredor principal. Quioque número 20 está logo à frente do banheiro</rdfs:comment>
+        <rdfs:label xml:lang="pt-br">Rua 1 número 20</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Rua_1_7 -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Rua_1_7">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#Rota"/>
+        <parte_1:levaA rdf:resource="http://www.web-semantica/ep/parte_1#Joias_Boom"/>
+        <rdfs:label xml:lang="pt-br">A Rua 1 é o corredor principal. Quioque número 7 ao lado do service desk</rdfs:label>
+        <rdfs:label xml:lang="pt-br">Rua 1 número 7</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Rua_2_11 -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Rua_2_11">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#Rota"/>
+        <parte_1:levaA rdf:resource="http://www.web-semantica/ep/parte_1#Prato_Feito"/>
+        <rdfs:comment xml:lang="pt-br">A Rua 2 é o corredor à primeira direita do corredor principal. Quioque número 11 está a frente da sorveteria</rdfs:comment>
+        <rdfs:label xml:lang="pt-br">Rua 2 número 11</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Rua_3_2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Rua_3_2">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#Rota"/>
+        <parte_1:levaA rdf:resource="http://www.web-semantica/ep/parte_1#Style"/>
+        <rdfs:comment xml:lang="pt-br">A Rua 3 é o corredor à primeira esquerda do corredor principal. Quioque número 2 esta ao lado direito da escada</rdfs:comment>
+        <rdfs:label xml:lang="pt-br">Rua 3 número 9</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Rua_3_8 -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Rua_3_8">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#Rota"/>
+        <parte_1:levaA rdf:resource="http://www.web-semantica/ep/parte_1#Veste_Hype"/>
+        <rdfs:comment xml:lang="pt-br">A Rua 3 é o corredor à primeira esquerda do corredor principal. Quioque número 8 está ao lado da entrada da praça de alimentação</rdfs:comment>
+        <rdfs:label xml:lang="pt-br">Rua 3 número 8</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Rua_3_9 -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Rua_3_9">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#Rota"/>
+        <parte_1:levaA rdf:resource="http://www.web-semantica/ep/parte_1#Cleo_Massagens"/>
+        <rdfs:comment xml:lang="pt-br">A Rua 3 é o corredor à primeira esquerda do corredor principal. Quioque número 9 está na esquina desse encontro</rdfs:comment>
+        <rdfs:label xml:lang="pt-br">Rua 3 número 9</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Style -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Style">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#LojaProdutos"/>
+        <parte_1:vende rdf:resource="http://www.web-semantica/ep/parte_1#Camisa"/>
+        <parte_1:vende rdf:resource="http://www.web-semantica/ep/parte_1#Oculos"/>
+        <parte_1:vende rdf:resource="http://www.web-semantica/ep/parte_1#Tenis"/>
+        <rdfs:label xml:lang="pt-br">style</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Tenis -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Tenis">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#Produto"/>
+        <rdfs:label xml:lang="pt-br">tênis</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.web-semantica/ep/parte_1#Veste_Hype -->
+
+    <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Veste_Hype">
+        <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#LojaProdutos"/>
+        <parte_1:vende rdf:resource="http://www.web-semantica/ep/parte_1#Calca"/>
+        <parte_1:vende rdf:resource="http://www.web-semantica/ep/parte_1#Camisa"/>
+        <parte_1:vende rdf:resource="http://www.web-semantica/ep/parte_1#Tenis"/>
+        <rdfs:label xml:lang="pt-br">veste hype</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Cliente"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Loja"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Produto"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Rota"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Servico"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Beauty_Turismo"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Calca"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Camisa"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Chocolate"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Cleo_Massagens"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Hamburguer"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Jhonny"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Joia"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Joias_Boom"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Marie"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Massagem"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Oculos"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Pacote_Viagens"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Prato_Feito"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Rua_1_20"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Rua_1_7"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Rua_2_11"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Rua_3_2"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Rua_3_8"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Rua_3_9"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Style"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Tenis"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#Veste_Hype"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#compra"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#compradoPor"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#contrata"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#contratadoPor"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#estaEm"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#levaA"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#oferece"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#oferecidoPor"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#vende"/>
+            <rdf:Description rdf:about="http://www.web-semantica/ep/parte_1#vendidoPor"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
