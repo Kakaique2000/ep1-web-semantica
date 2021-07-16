@@ -41,3 +41,28 @@ public class MainController {
         return retorno;
     }
 }
+
+/*
+Listar Loja por nome
+
+String queryString = 
+            "PREFIX owl: <http://www.w3.org/2002/07/owl#>"+
+            "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>"+
+            "SELECT ?label "+
+            "WHERE{ "+
+            "?x rdfs:label ?label "+
+            "FILTER (?x IN (rdf:type <http://www.web-semantica/ep/parte_1#LojaServicos/>,  rdf:type <http://www.web-semantica/ep/parte_1#LojaProdutos>))"; 
+Query query = QueryFactory.create(queryString);
+QueryExecution qe = QueryExecutionFactory.create(query, model);
+try {
+    ResultSet res = qe.execSelect();
+    while( res.hasNext()) {
+        QuerySolution soln = res.next();
+        RDFNode label = soln.get("?label");
+        System.out.println(label);
+    }
+} finally {
+    qe.close();
+}
+
+*/
