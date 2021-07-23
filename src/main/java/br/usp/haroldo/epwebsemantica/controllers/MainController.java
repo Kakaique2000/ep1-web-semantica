@@ -1,5 +1,6 @@
 package br.usp.haroldo.epwebsemantica.controllers;
 
+import br.usp.haroldo.epwebsemantica.configuration.OntologyConfig;
 import br.usp.haroldo.epwebsemantica.models.LojaDTO;
 import br.usp.haroldo.epwebsemantica.services.RDFLoader;
 import org.apache.jena.query.*;
@@ -25,7 +26,10 @@ import java.util.List;
 public class MainController {
 
     @Autowired
-    RDFLoader rdfLoader;
+    OntologyConfig ontology;
+
+    @Autowired
+    Model model;
 
     @GetMapping("/lojas")
     public List<LojaDTO> getLojas() throws IOException {
@@ -34,44 +38,16 @@ public class MainController {
                         "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
                         "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
                         "PREFIX parte_1: <http://www.web-semantica/ep/parte_1#>" +
-                        "SELECT ?loja ?label ?atividade ?atividadeLabel " +
+                        "SELECT ?uri ?nome ?atividadeRes ?atividade ?fotoUrl " +
                         "WHERE{ " +
-                        "{ ?loja a <http://www.web-semantica/ep/parte_1#LojaServicos> } UNION { ?loja a <http://www.web-semantica/ep/parte_1#LojaProdutos> } ." +
-                        "?loja rdfs:label ?label ." +
-                        "?loja parte_1:oferece ?atividade ." +
-                        "?atividade rdfs:label ?atividadeLabel" +
+                        "{ ?uri a <http://www.web-semantica/ep/parte_1#LojaServicos> } UNION { ?uri a <http://www.web-semantica/ep/parte_1#LojaProdutos> } ." +
+                        "?uri rdfs:label ?nome . " +
+                        " OPTIONAL { ?uri parte_1:foto ?fotoUrl } . " +
+                        "?uri parte_1:oferece ?atividadeRes ." +
+                        "?atividadeRes rdfs:label ?atividade" +
                         "}";
-        Query query = QueryFactory.create(queryString);
 
-        Resource resource = rdfLoader.loadOWL("ontologia_centro.owl");
-
-        Model model = ModelFactory.createDefaultModel();
-
-        model.read(resource.getInputStream(), null);
-
-        QueryExecution qe = QueryExecutionFactory.create(query, model);
-        var lojas = new ArrayList<LojaDTO>();
-        try {
-            ResultSet res = qe.execSelect();
-            while (res.hasNext()) {
-                QuerySolution soln = res.next();
-                RDFNode label = soln.get("?label");
-                RDFNode uri = soln.get("?loja");
-                RDFNode atividade = soln.get("?atividadeLabel");
-                lojas.add(LojaDTO
-                        .builder()
-                        .uri(uri.toString())
-                        .nome(label.asLiteral().getString())
-                        .atividade(atividade.asLiteral().getString())
-                        .build()
-                );
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            qe.close();
-        }
-
+        List<LojaDTO> lojas = ontology.executeQueryToType(queryString, LojaDTO.class);
         return lojas;
     }
 }

@@ -1,10 +1,12 @@
 package br.usp.haroldo.epwebsemantica.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Builder
+@NoArgsConstructor
 public class LojaDTO {
     private String nome;
     private String atividade;

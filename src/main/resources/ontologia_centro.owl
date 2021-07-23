@@ -139,7 +139,11 @@
         <rdfs:label xml:lang="pt-br">oferece</rdfs:label>
     </owl:ObjectProperty>
     
+    <!-- http://www.web-semantica/ep/parte_1#foto -->
 
+    <owl:ObjectProperty rdf:about="http://www.web-semantica/ep/parte_1#foto">
+        <rdfs:label xml:lang="pt-br">foto</rdfs:label>
+    </owl:ObjectProperty>
 
     <!-- http://www.web-semantica/ep/parte_1#oferecidoPor -->
 
@@ -302,6 +306,7 @@
     <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Beauty_Turismo">
         <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#LojaServicos"/>
         <parte_1:oferece rdf:resource="http://www.web-semantica/ep/parte_1#Pacote_Viagens"/>
+        <parte_1:foto rdf:resource="https://scontent.fcgh8-1.fna.fbcdn.net/v/t1.6435-9/117388923_2621152274653801_7706966452969885554_n.jpg?_nc_cat=108&amp;ccb=1-3&amp;_nc_sid=09cbfe&amp;_nc_eui2=AeFwd4V49DIUlRMVmn0zkyDNO3wbHYlYH2M7fBsdiVgfY3fHWSG4nplXCfbT_O3XT5ErtxlWXb2naG0a0_q5BEqk&amp;_nc_ohc=MHlTc5wIrisAX8IfIaf&amp;_nc_ht=scontent.fcgh8-1.fna&amp;oh=5a18b617aa225e761722fe4561322e8a&amp;oe=611E99DA" />
         <rdfs:label xml:lang="pt-br">beauty turismo</rdfs:label>
     </owl:NamedIndividual>
     
@@ -440,7 +445,7 @@
     <owl:NamedIndividual rdf:about="http://www.web-semantica/ep/parte_1#Rua_1_20">
         <rdf:type rdf:resource="http://www.web-semantica/ep/parte_1#Rota"/>
         <parte_1:levaA rdf:resource="http://www.web-semantica/ep/parte_1#Beauty_Turismo"/>
-        <rdfs:comment xml:lang="pt-br">A Rua 1 é o corredor principal. Quioque número 20 está logo à frente do banheiro</rdfs:comment>
+        <rdfs:comment xml:lang="pt-br">A Rua 1 é o corredor principal. Quiosque número 20 está logo à frente do banheiro</rdfs:comment>
         <rdfs:label xml:lang="pt-br">Rua 1 número 20</rdfs:label>
     </owl:NamedIndividual>
     
