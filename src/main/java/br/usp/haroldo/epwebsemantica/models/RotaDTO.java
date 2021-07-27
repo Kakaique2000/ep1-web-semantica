@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class LojaDTO {
     private String nome;
-    private String atividade;
-    private String uri;
+    private String descricao;
+    private String loja;
 }

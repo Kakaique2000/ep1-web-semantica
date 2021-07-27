@@ -5,9 +5,10 @@ import lombok.Data;
 @Data
 public class ProdutoDTO {
         private String nome;
-        private String categoria;
+        private String loja;
         private String uri;
         private String fotoUrl;
-        private String descricao;
+        private int codigo;
         private double preco;
+        private int qtd;
 }
