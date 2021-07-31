@@ -1,27 +1,22 @@
 package br.usp.haroldo.epwebsemantica.controllers;
 
 import br.usp.haroldo.epwebsemantica.configuration.OntologyConfig;
+import br.usp.haroldo.epwebsemantica.models.LojaPesquisarPorEnum;
 import br.usp.haroldo.epwebsemantica.models.LojaDTO;
-import br.usp.haroldo.epwebsemantica.services.RDFLoader;
-import org.apache.jena.query.*;
+import br.usp.haroldo.epwebsemantica.models.ProdutoDTO;
+import br.usp.haroldo.epwebsemantica.models.RotaDTO;
 import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
-import org.apache.jena.rdf.model.RDFNode;
-import org.apache.jena.sparql.vocabulary.FOAF;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin
 @RequestMapping("")
 public class MainController {
 
@@ -31,9 +26,26 @@ public class MainController {
     @Autowired
     Model model;
 
-    //Listar Loja ordenado por nome
     @GetMapping("/lojas")
-    public List<LojaDTO> getLojasByNome() throws IOException {
+    public List<LojaDTO> getLojas(
+            @RequestParam(value = "ordenar", defaultValue = "nome") String ordenar,
+            @RequestParam(value = "pesquisa", defaultValue = "") String pesquisa) throws IOException {
+            switch (LojaPesquisarPorEnum.valueOf(ordenar.toUpperCase(Locale.ROOT))) {
+            case NOME: return filtraListaComParametro(getLojasByNome(), pesquisa);
+            case ATIVIDADE: return filtraListaComParametro(getLojasByAtividade(), pesquisa);
+            default: return filtraListaComParametro(getLojasByNome(), pesquisa);
+        }
+    }
+
+    private List<LojaDTO> filtraListaComParametro(List<LojaDTO> lojas, String param) {
+        return lojas
+                .stream()
+                .filter(e -> e.getNome().contains(param) || e.getUri().contains((param)))
+                .collect(Collectors.toList());
+    }
+
+    //Listar Loja ordenado por nome
+    private List<LojaDTO> getLojasByNome() throws IOException {
         String queryString =
                         "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
                         "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
@@ -53,8 +65,7 @@ public class MainController {
     }
 
     //Listar Loja por ordenado por atividade
-    @GetMapping("/lojas")
-    public List<LojaDTO> getLojasByAtividade() throws IOException {
+    private List<LojaDTO> getLojasByAtividade() throws IOException {
         String queryString =
                         "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
                         "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
@@ -90,7 +101,7 @@ public class MainController {
                                 "parte_1:codigo             ?codigo ;" +
                                 "parte_1:preco              ?preco ;" +
                                 "parte_1:quantidadeEstoque  ?qtd" +
-                            "FILTER ( ?loja = "+ loja.uri +" )" +
+                            "FILTER ( ?loja = "+ loja.getUri() +" )" +
                         "}" + 
                         "ORDER BY ?nome";
 
@@ -111,8 +122,8 @@ public class MainController {
                         "{ ?uri  rdf:type       parte_1:Rota ;" +
                                 "rdfs:label     ?nome ;" +
                                 "rdfs:comment   ?descricao ;" +
-                                "parte_1:levaA  ?loja ;" 
-                            "FILTER ( ?loja = "+ loja.uri +" )" +
+                                "parte_1:levaA  ?loja ;" +
+                            "FILTER ( ?loja = " + loja.getUri() +" )" +
                         "}";
 
         List<RotaDTO> rotas = ontology.executeQueryToType(queryString, RotaDTO.class);
