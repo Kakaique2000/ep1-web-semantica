@@ -9,4 +9,5 @@ public class LojaDTO {
     private String nome;
     private String atividade;
     private String uri;
+    private String rota;
 }

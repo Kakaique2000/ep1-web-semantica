@@ -4,11 +4,15 @@ import br.usp.haroldo.epwebsemantica.configuration.OntologyConfig;
 import br.usp.haroldo.epwebsemantica.models.*;
 import org.apache.jena.rdf.model.Model;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
@@ -101,13 +105,41 @@ public class MainController {
                         "ORDER BY ?nome";
 
         List<ProdutoDTO> produtos = ontology.executeQueryToType(queryString, ProdutoDTO.class);
+
+
+
         List<ProdutoDTO> produtoFiltrados = filtraListaProdutoComLoja(produtos, lojaUri);
         if(tipoPesquisa.toUpperCase(Locale.ROOT).equals("ATIVIDADE"))
             return filtraPesquisaProdutoAtividade(produtoFiltrados, pesquisa);
         else return filtraPesquisaProdutoNome(produtoFiltrados, pesquisa);
     }
 
+    @PostMapping("/compras")
+    public List<Map> getProdutosUsuario(
+                @RequestBody ComprasForm comprasForm
+            ) throws IOException {
+        String queryString =
+                "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
+                        "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+                        "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
+                        "PREFIX parte_1: <http://www.web-semantica/ep/parte_1#>" +
+                        "SELECT  ?nome ?loja ?uri ?cliente ?fotoUrl ?lojaLabel ?lojaAtividade ?codigo ?preco ?qtd" +
+                        "WHERE" +
+                        "{ ?uri  rdf:type                   parte_1:Produto ;" +
+                        "rdfs:label                 ?nome ; " +
+                        "parte_1:vendidoPor         ?loja ; " +
+                        "parte_1:foto               ?fotoUrl ; " +
+                        "parte_1:codigo             ?codigo ; " +
+                        "parte_1:preco              ?preco ; " +
+                        "parte_1:quantidadeEstoque  ?qtd ; " +
+                        "parte_1:compradoPor  ?cliente . " +
+                        "?loja rdfs:label ?lojaLabel ." +
+                        "?loja parte_1:Atividade ?lojaAtividade . " +
+                        "}" +
+                        "ORDER BY ?nome";
 
+        return ontology.executeQueryToType(queryString, Map.class).stream().filter(e -> e.get("cliente").equals(comprasForm.getCliente())).collect(Collectors.toList());
+    }
 
     //Listar Rotas
     @GetMapping("/rotas")
@@ -132,9 +164,15 @@ public class MainController {
 
     @PostMapping("/login")
     public LoginDTO login(@RequestBody LoginForm loginForm) {
+        if (!loginForm.getEmail().equals("jhonny@gmail.com") || !loginForm.getEmail().equals("senha123")) {
+            throw new ResponseStatusException(
+                    HttpStatus.FORBIDDEN, "credenciais inválidas"
+            );
+        }
         return new LoginDTO(
-                "Jhonny",
-                "ABCDEFG"
+                "Jhonny Walker",
+                "ABCDEFG",
+                "http://www.web-semantica/ep/parte_1#Jhonny"
         );
     }
 

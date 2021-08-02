@@ -10,5 +10,5 @@ import lombok.NoArgsConstructor;
 public class LoginDTO {
     private String nome;
     private String token;
-
+    private String uri;
 }
