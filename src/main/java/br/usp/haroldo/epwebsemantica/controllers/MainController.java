@@ -1,10 +1,7 @@
 package br.usp.haroldo.epwebsemantica.controllers;
 
 import br.usp.haroldo.epwebsemantica.configuration.OntologyConfig;
-import br.usp.haroldo.epwebsemantica.models.LojaOrdenarPorEnum;
-import br.usp.haroldo.epwebsemantica.models.LojaDTO;
-import br.usp.haroldo.epwebsemantica.models.ProdutoDTO;
-import br.usp.haroldo.epwebsemantica.models.RotaDTO;
+import br.usp.haroldo.epwebsemantica.models.*;
 import org.apache.jena.rdf.model.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -131,6 +128,14 @@ public class MainController {
 
         List<RotaDTO> rotas = ontology.executeQueryToType(queryString, RotaDTO.class);
         return rotas;
+    }
+
+    @PostMapping("/login")
+    public LoginDTO login(@RequestBody LoginForm loginForm) {
+        return new LoginDTO(
+                "Jhonny",
+                "ABCDEFG"
+        );
     }
 
     private List<LojaDTO> filtraListaLojaComParametro(List<LojaDTO> lojas, String param) {
