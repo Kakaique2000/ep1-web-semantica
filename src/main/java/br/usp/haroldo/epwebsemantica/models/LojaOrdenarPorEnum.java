@@ -1,13 +1,13 @@
 package br.usp.haroldo.epwebsemantica.models;
 
-public enum LojaPesquisarPorEnum {
+public enum LojaOrdenarPorEnum {
 
     NOME("nome"),
     ATIVIDADE("atividade");
 
     public String label;
 
-    LojaPesquisarPorEnum(String label) {
+    LojaOrdenarPorEnum(String label) {
         this.label = label;
     }
 
